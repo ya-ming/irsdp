@@ -1,6 +1,6 @@
-package com.yaming.irsdp.ch01.JobHandlerMain;
+package com.yaming.irsdp.ch02.JobHandlerMain;
 
-import com.yaming.irsdp.ch01.JobHandler.ParentAsyncJobHandler;
+import com.yaming.irsdp.ch02.JobHandler.ParentAsyncJobHandler;
 import se.sics.kompics.Kompics;
 
 public class MainAsync {

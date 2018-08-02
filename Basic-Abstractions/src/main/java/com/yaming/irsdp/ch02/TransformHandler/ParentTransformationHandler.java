@@ -1,9 +1,7 @@
-package com.yaming.irsdp.ch01.TransformHandler;
+package com.yaming.irsdp.ch02.TransformHandler;
 
-import com.yaming.irsdp.ch01.JobHandler.AsyncJobHandler;
-import com.yaming.irsdp.ch01.JobHandler.JobPort;
-import com.yaming.irsdp.ch01.JobHandler.SyncJobHandler;
-import com.yaming.irsdp.ch01.TransformHandler.JobRequester;
+import com.yaming.irsdp.ch02.JobHandler.JobPort;
+import com.yaming.irsdp.ch02.JobHandler.SyncJobHandler;
 import se.sics.kompics.*;
 import se.sics.kompics.timer.Timer;
 import se.sics.kompics.timer.java.JavaTimer;

@@ -1,11 +1,11 @@
-package com.yaming.irsdp.ch01.Events;
+package com.yaming.irsdp.ch02.Events;
 
 import se.sics.kompics.Event;
 
-public final class Submit extends Event{
+public class Confirm extends Event {
     private long id;
 
-    public Submit(long id) {
+    public Confirm(long id) {
         this.id = id;
     }
 

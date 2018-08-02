@@ -1,7 +1,7 @@
-package com.yaming.irsdp.ch01.JobHandler;
+package com.yaming.irsdp.ch02.JobHandler;
 
-import com.yaming.irsdp.ch01.Events.Confirm;
-import com.yaming.irsdp.ch01.Events.Submit;
+import com.yaming.irsdp.ch02.Events.Confirm;
+import com.yaming.irsdp.ch02.Events.Submit;
 import se.sics.kompics.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

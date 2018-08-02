@@ -1,4 +1,4 @@
-package com.yaming.irsdp.ch01.Events;
+package com.yaming.irsdp.ch02.Events;
 
 import se.sics.kompics.Event;
 

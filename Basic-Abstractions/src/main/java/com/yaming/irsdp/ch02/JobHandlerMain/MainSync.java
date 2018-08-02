@@ -1,6 +1,6 @@
-package com.yaming.irsdp.ch01.JobHandlerMain;
+package com.yaming.irsdp.ch02.JobHandlerMain;
 
-import com.yaming.irsdp.ch01.JobHandler.ParentSyncJobHandler;
+import com.yaming.irsdp.ch02.JobHandler.ParentSyncJobHandler;
 import se.sics.kompics.Kompics;
 
 public class MainSync {

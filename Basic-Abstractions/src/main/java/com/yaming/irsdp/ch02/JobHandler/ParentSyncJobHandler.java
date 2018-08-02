@@ -1,4 +1,4 @@
-package com.yaming.irsdp.ch01.JobHandler;
+package com.yaming.irsdp.ch02.JobHandler;
 
 import se.sics.kompics.*;
 import se.sics.kompics.timer.Timer;

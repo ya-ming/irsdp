@@ -1,6 +1,6 @@
-package com.yaming.irsdp.ch01.TransformHandlerMain;
+package com.yaming.irsdp.ch02.TransformHandlerMain;
 
-import com.yaming.irsdp.ch01.TransformHandler.ParentTransformationHandler;
+import com.yaming.irsdp.ch02.TransformHandler.ParentTransformationHandler;
 import se.sics.kompics.Kompics;
 
 public class Main {
