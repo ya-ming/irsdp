@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: se.sics.kompics.basic:kompics-port-timer:0.5.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/se/sics/kompics/basic/kompics-port-timer/0.5.0-SNAPSHOT/kompics-port-timer-0.5.0-20140318.135441-6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/se/sics/kompics/basic/kompics-port-timer/0.5.0-SNAPSHOT/kompics-port-timer-0.5.0-20140318.135441-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/se/sics/kompics/basic/kompics-port-timer/0.5.0-SNAPSHOT/kompics-port-timer-0.5.0-20140318.135441-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
