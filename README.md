@@ -7,4 +7,3 @@ Based on Komipic(http://kompics.sics.se/current/), a programming model for distr
 ## Introduction
 ### Job Handler
 ### Transform Handler
-

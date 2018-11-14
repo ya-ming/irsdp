@@ -35,3 +35,7 @@ out/
 logs
 untitiled
 .git
+.idea
+*.log
+*.svg
+*.puml

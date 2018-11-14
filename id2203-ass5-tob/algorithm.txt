@@ -1,0 +1,90 @@
+1: upon event < asc, Init > do
+2:  t := 0, . logical clock
+3:  prepts := 0, . acceptor: prepared timestamp
+4:  (ats, av, al ) := (0, <>, 0), . acceptor: timestamp, accepted seq, length of decided seq
+5:  (pts, pv, pl ) := (0, <>, 0), . proposer: timestamp, proposed seq, length of learned seq
+6:  proposedValues := <>, . proposer: values proposed while preparing
+7:  readlist := [_|_]N;
+8:  accepted := [0]N, . proposer's knowledge about length of acceptor's longest accepted seq
+9:  decided := [0]N, . proposer's knowledge about length of acceptor's longest decided seq
+
+10: upon event < asc, Propose | v > do
+11:     t := t + 1;
+12:     if pts = 0 then
+13:         pts := t * N + rank(self );
+14:         pv := prefix(av, al );
+15:         pl := 0;
+16:         proposedValues := <v>;
+17:         readlist := [┴]N;
+18:         accepted := [0]N;
+19:         decided := [0]N;
+20:         for all p∈∏ do
+21:             trigger < fpl , Send | p, [Prepare, pts, al , t] >;
+22:     else if #(readlist) <= └N/2┘ then
+23:         proposedValues := proposedValues + <v>, . append to sequence
+24:     else if v !∈ pv then
+25:         pv := pv + <v>;
+26:         for all p∈π such that readlist [p] != ┴ do
+27:             trigger < fpl , Send | p, [Accept, pts, <v>, #(pv) - 1, t] >;
+
+28: upon event < fpl , Deliver | q, [Prepare, ts, l, t'] > do
+29:     t := max(t, t') + 1;
+30:     if ts < prepts then
+31:         trigger < fpl , Send | q, [Nack, ts, t] >;
+32:     else
+33:         prepts := ts;
+34:         trigger < fpl , Send | q, [PrepareAck, ts, ats, suffix(av, l), al , t] >;
+
+35: upon event < fpl ;Deliver | q, [Nack, pts', t'] > do
+36:     t := max(t, t') + 1;
+37:     if pts' = pts then
+38:         pts := 0;
+39:         trigger < asc, Abort >
+
+40: upon event < fpl , Deliver | q, [PrepareAck, pts', ts, vsuf , l, t'] > do
+41:     t := max(t, t') + 1;
+42:     if pts' = pts then
+43:         readlist[q] := (ts, vsuf );
+44:         decided[q] := l;
+45:         if #(readlist) = └N/2┘ + 1 then
+46:             (ts', vsuf') := (0, <>);
+47:             for all (ts'', vsuf'')∈readlist do
+48:                 if ts' < ts'' || (ts' = ts'' && #(vsuf') < #(vsuf'')) then
+49:                     (ts', vsuf') := (ts'', vsuf'');
+50:             pv := pv + vsuf';
+51:             for all v∈proposedValues such that v !∈ pv do
+52:                 pv := pv + <v>;
+53:             for all p∈π such that readlist [p] != ┴ do
+54:                 l0 := decided[p];
+55:                 trigger < fpl , Send | p, [Accept, pts, suffix(pv, l0), l0, t] >;
+56:         else if #(readlist) > └N/2┘ + 1 then
+57:             trigger < fpl , Send | q, [Accept, pts, suffix(pv, l), l, t] >;
+58:             if pl != 0 then
+59:                 trigger < fpl , Send | q, [Decide, pts, pl , t] >;
+
+60: upon event < fpl ;Deliver | q, [Accept, ts, vsuf , offs, t'] > do
+61:     t := max(t, t') + 1;
+62:     if ts != prepts then
+63:         trigger < fpl , Send | q, [Nack, ts, t] >;
+64:     else
+65:         ats := ts;
+66:         if offs < #(av) then
+67:             av := prefix(av, offs), . truncate sequence
+68:         av := av + vsuf ;
+69:         trigger < fpl , Send | q, [AcceptAck, ts, #(av), t] >;
+
+70: upon event < fpl ;Deliver | q, [AcceptAck, pts', l, t'] > do
+71:     t := max(t, t') + 1;
+72:     if pts' = pts then
+73:         accepted[q] := l;
+74:         if pl < l ^ #({p∈π | accepted[p] >= l}) > └N/2┘ then
+75:             pl := l;
+76:             for all p∈π such that readlist [p] != _|_ do
+77:                 trigger < fpl , Send | p, [Decide, pts, pl , t] >;
+
+78: upon event < fpl ;Deliver | q, [Decide, ts, l, t'] > do
+79:     t := max(t, t') + 1;
+80:     if ts = prepts then
+81:         while al < l do
+82:             trigger < asc;Decide | av[al] >, . zero-based indexing
+83:             al := al + 1;

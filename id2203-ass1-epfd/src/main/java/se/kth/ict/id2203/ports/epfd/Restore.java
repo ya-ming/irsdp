@@ -1,0 +1,17 @@
+package se.kth.ict.id2203.ports.epfd;
+
+import se.sics.kompics.Event;
+import se.sics.kompics.address.Address;
+
+public class Restore extends Event {
+
+	private final Address source;
+
+	public Restore(Address source) {
+		this.source = source;
+	}
+
+	public final Address getSource() {
+		return source;
+	}
+}
