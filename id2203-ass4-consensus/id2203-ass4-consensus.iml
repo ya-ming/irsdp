@@ -25,5 +25,7 @@
     <orderEntry type="library" name="Maven: org.jboss.netty:netty:3.2.4.Final" level="project" />
     <orderEntry type="library" name="Maven: se.sics.kompics.launcher:kompics-local-process-launcher:0.5.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:15.0" level="project" />
+    <orderEntry type="library" name="id2203-ass2-broadcast" level="project" />
+    <orderEntry type="library" name="id2203-ass1-epfd" level="project" />
   </component>
 </module>

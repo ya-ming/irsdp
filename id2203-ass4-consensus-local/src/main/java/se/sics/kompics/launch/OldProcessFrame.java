@@ -129,8 +129,8 @@ public class OldProcessFrame extends JFrame {
 
 //		Object c = getClass();
 //		Object r = getClass().getResource("kompics32.png");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				getClass().getResource("kompics32.png")));
+//		this.setIconImage(Toolkit.getDefaultToolkit().getImage(
+//				getClass().getResource("kompics32.png")));
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosed(WindowEvent e) {

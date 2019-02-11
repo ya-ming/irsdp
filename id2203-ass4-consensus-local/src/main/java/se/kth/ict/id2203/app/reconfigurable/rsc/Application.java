@@ -167,6 +167,7 @@ public final class Application extends ComponentDefinition {
 	}
 
 	private void doReconfiguration(String strings) {
+		//C1@1@2@3
 		logger.info("Reconfiguration " + strings);
 
 		String[] args = strings.split("@");
