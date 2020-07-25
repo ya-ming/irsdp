@@ -2,7 +2,7 @@
 
 Implemented the algorithms of book Introduction to Reliable and Secure Distributed Programming. The offical web site of the book - https://www.distributedprogramming.net/
 
-Based on Komipic(http://kompics.sics.se/current/), a programming model for distributed systems that implements protocols as event-driven components connected by channels.
+Based on Komipic(http://kompics.github.io), a programming model for distributed systems that implements protocols as event-driven components connected by channels.
 
 Programming assignment 0-5 for course ID2203 Distributed Systems and implemented the algorithms in the book - Introduction to Reliable and Secure Distributed Programming.
 
